@@ -6,15 +6,12 @@ locationBtn = inputPart.querySelector("button"),
 weatherPart = wrapper.querySelector(".weather-part"),
 wIcon = weatherPart.querySelector("img"),
 arrowBack = wrapper.querySelector("header i");
-
 let api;
-
 inputField.addEventListener("keyup", e =>{
     if(e.key == "Enter" && inputField.value != ""){
         requestApi(inputField.value);
     }
 });
-
 locationBtn.addEventListener("click", () =>{
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
@@ -22,22 +19,19 @@ locationBtn.addEventListener("click", () =>{
         alert("Your browser not support geolocation api");
     }
 });
-
-
 function requestApi(city){
-    api = `https://weatherdbi.herokuapp.com/data/weather/{newyork}`;
+    api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=93563855366b5e30ce92674e93febfc7`;
     fetchData();
 }
 function onSuccess(position){
     const {latitude, longitude} = position.coords;
-    api = `https://weatherdbi.herokuapp.com/data/weather/{28.539143,-81.403076}`;
+    api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=93563855366b5e30ce92674e93febfc7`;
     fetchData();
 }
 function onError(error){
     infoTxt.innerText = error.message;
     infoTxt.classList.add("error");
 }
-
 function fetchData(){
     infoTxt.innerText = "Getting weather details...";
     infoTxt.classList.add("pending");
@@ -46,7 +40,6 @@ function fetchData(){
         infoTxt.classList.replace("pending", "error");
     });
 }
-
 function weatherDetails(info){
     if(info.cod == "404"){
         infoTxt.classList.replace("pending", "error");
@@ -56,7 +49,6 @@ function weatherDetails(info){
         const country = info.sys.country;
         const {description, id} = info.weather[0];
         const {temp, feels_like, humidity} = info.main;
-
         if(id == 800){
             wIcon.src = "icons/clear.svg";
         }else if(id >= 200 && id <= 232){
@@ -82,7 +74,6 @@ function weatherDetails(info){
         wrapper.classList.add("active");
     }
 }
-
 arrowBack.addEventListener("click", ()=>{
     wrapper.classList.remove("active");
 });
