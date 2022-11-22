@@ -198,6 +198,17 @@ let weather={
         console.log(arr.currentConditions.humidity);
         console.log(arr.currentConditions.wind);
         console.log(arr.currentConditions.comment);
+        const icon = document.querySelector("#weather-icon");
+
+  document.getElementById('Region').innerHTML = 'Region: ' + usrRegion;
+  document.getElementById('DayHour').innerHTML = 'Time: ' + usrDayHr;
+  document.getElementById('Temp').innerHTML = 'Temperature: ' + usrTempCel + "\u2103/" + usrTempFah + 	"\u2109";
+  document.getElementById('Precip').innerHTML = 'Precipitation: ' + usrPrecip;
+  document.getElementById('Humidity').innerHTML = 'Humidity: ' + usrHumidity;
+  document.getElementById('Wind').innerHTML = 'Wind: ' + usrWindKM + "km/" + usrWindMile + "mi";
+  document.getElementById('Comment').innerHTML = 'Comment: ' + usrComment;
+  icon.src = usrIcon;
         }
     }
-    
+}
+}
