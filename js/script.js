@@ -88,7 +88,7 @@ arrowBack.addEventListener("click", ()=>{
     wrapper.classList.remove("active");
 });
 function returnLocation(){
-    let input = document.getElementById("wrapper").value;
+    let input = document.getElementById("content").value;
   
     alert(input)
     
