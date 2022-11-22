@@ -155,3 +155,49 @@ let weather={
         document.querySelector(".weather_forecast_icon"+(i+1)).src=data.next_days[i].iconURL;  
   
       }
+      function returnLocation(){
+        let input = document.getElementById("loc_name").value;
+      
+        alert(input)
+        
+        var myRequest = new XMLHttpRequest();
+        myRequest.onreadystatechange = function(){
+        if (myRequest.readyState === 4) {
+        if (myRequest.status === 200)
+        var myArray = JSON.parse(myRequest.responseText);
+        parseData(myArray);
+        }
+        }
+        
+        let site = myRequest.open('GET', 'https://weatherdbi.herokuapp.com/data/weather/' + input, true);
+        
+        let test1 = JSON.stringify(site);
+        
+        myRequest.send();
+      
+        function parseData(arr) {
+      
+        console.log(arr);
+      
+        usrRegion = arr.region;
+        usrDayHr = arr.currentConditions.dayhour;
+        usrTempCel = arr.currentConditions.temp.c;
+        usrTempFah = arr.currentConditions.temp.f;
+        usrPrecip = arr.currentConditions.precip;
+        usrHumidity = arr.currentConditions.humidity;
+        usrWindKM = arr.currentConditions.wind.km;
+        usrWindMile = arr.currentConditions.wind.mile;
+        usrComment = arr.currentConditions.comment;
+        usrIcon = arr.currentConditions.iconURL;
+      
+        console.log(arr.region);
+        console.log(arr.currentConditions);
+        console.log(arr.currentConditions.dayhour);
+        console.log(arr.currentConditions.temp);
+        console.log(arr.currentConditions.precip);
+        console.log(arr.currentConditions.humidity);
+        console.log(arr.currentConditions.wind);
+        console.log(arr.currentConditions.comment);
+        }
+    }
+    
