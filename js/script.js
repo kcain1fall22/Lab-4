@@ -30,7 +30,7 @@ function requestApi(city){
 
 function onSuccess(position){
     const {latitude, longitude} = position.coords;
-    api = 'GET',  'https://weatherdbi.herokuapp.com/data/weather/{lat,long}`;
+    api = 'GET',  'https://weatherdbi.herokuapp.com/data/weather/{lat,long}';
     fetchData();
 }
 
