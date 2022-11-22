@@ -25,12 +25,12 @@ locationBtn.addEventListener("click", () =>{
 
 
 function requestApi(city){
-    api = `https://api.weatherdbi.herokuapp.com/data/weather/{newyork}`;
+    api = `https://weatherdbi.herokuapp.com/data/weather/{newyork}`;
     fetchData();
 }
 function onSuccess(position){
     const {latitude, longitude} = position.coords;
-    api = `https://api.weatherdbi.herokuapp.com/data/weather/{28.539143,-81.403076}`;
+    api = `https://weatherdbi.herokuapp.com/data/weather/{28.539143,-81.403076}`;
     fetchData();
 }
 function onError(error){
